@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { user } from './user.entity';
+import { program } from './class.entity';
 
 @Injectable()
 export class AppService {
@@ -9,6 +10,9 @@ export class AppService {
     @InjectRepository(user)
     private readonly UserRepo: Repository<user>,
   ) {}
+  async getclass(dto: program) {
+    return await this.UserRepo.save(dto);
+  }
   async saveuser(dto: user) {
     return await this.UserRepo.save(dto);
   }
@@ -23,5 +27,9 @@ export class AppService {
   }
   async deleteRep(userid: number) {
     return await this.UserRepo.delete({ id: userid });
+  }
+  async updateuser(id: number, dto: user) {
+    const updateduser = this.UserRepo.update(id, dto);
+    return await updateduser;
   }
 }
