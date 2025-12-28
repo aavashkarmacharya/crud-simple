@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { program } from './class.entity';
 
 @Entity()
 export class user {
@@ -9,4 +10,6 @@ export class user {
   name: string;
   @Column()
   roll: number;
+  @ManyToOne(() => program, (program) => program.users)
+  program: program;
 }
