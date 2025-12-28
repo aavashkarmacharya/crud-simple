@@ -5,9 +5,11 @@ export class program {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
-  name: string;
+  name: number;
   @Column()
   subject: string;
-  @OneToMany(() => user, (user) => user.programs)
-  user = user;
+
+  studentid: number;
+  @OneToMany(() => user, (user) => user.program)
+  users: user[];
 }

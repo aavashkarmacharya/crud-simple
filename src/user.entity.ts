@@ -10,6 +10,6 @@ export class user {
   name: string;
   @Column()
   roll: number;
-  @ManyToOne(() => program, (program) => program.user)
-  programs: program[];
+  @ManyToOne(() => program, (program) => program.users)
+  program: program;
 }
